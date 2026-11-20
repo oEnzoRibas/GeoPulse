@@ -60,3 +60,11 @@ O ETL verifica os 853 identificadores e cruza as fontes abaixo. A simplificaçã
 - **Vercel**. Aponte o diretório raiz do projeto para `frontend` e selecione o preset Next.js. O build produz a exportação estática em `out/`. Configure `NEXT_PUBLIC_API_URL` antes do build para usar uma API remota.
 - **API**. Use a raiz deste repositório como contexto e `backend/Dockerfile` como Dockerfile. Para PostGIS gerenciado, configure `DATABASE_URL` com a URL do banco e execute `python -m backend.import_snapshot` como etapa de inicialização da base. O ambiente de migração precisa ter permissão para criar a extensão PostGIS ou encontrá-la pré-instalada. Configure `CORS_ORIGINS` com as origens do frontend separadas por vírgula.
 - **CI**. O GitHub Actions compila o frontend e verifica a importação da malha e uma consulta espacial em PostGIS.
+
+## Participar do projeto
+
+As releases reúnem as versões e suas notas. Para propor mudanças, consultar as regras de convivência ou comunicar uma vulnerabilidade, use os canais do projeto. [Releases](https://github.com/oEnzoRibas/GeoPulse/releases) · [Guia de contribuição](CONTRIBUTING.md) · [Código de conduta](CODE_OF_CONDUCT.md) · [Política de segurança](SECURITY.md)
+
+## Licença e atribuição
+
+O código original do GeoPulse é distribuído sob a licença MIT. Os indicadores e limites municipais têm origem no IBGE. Ao reutilizar os dados ou mapas derivados, preserve a atribuição, o ano de referência e a identificação das fontes. As dependências de terceiros seguem suas próprias licenças. [Licença do código](LICENSE) · [Fontes dos dados](#regenerar-a-base-oficial)

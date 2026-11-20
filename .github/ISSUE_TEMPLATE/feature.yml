@@ -1,0 +1,16 @@
+name: Propor melhoria
+description: Sugira uma melhoria de análise, dados, interface ou documentação.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qual tarefa você quer realizar?
+      description: Descreva quem usaria a melhoria e que pergunta ela ajudaria a responder.
+    validations:
+      required: true
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Resultado proposto
+      description: Para novos indicadores, inclua a fonte, o ano e a unidade de medida, quando disponíveis.
