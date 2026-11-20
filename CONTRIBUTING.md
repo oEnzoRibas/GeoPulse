@@ -1,6 +1,6 @@
 # Como contribuir com o GeoPulse
 
-O GeoPulse cruza dados do IBGE para comparar os municípios mineiros. Contribuições podem corrigir a interface, a API, a documentação, os indicadores ou a preparação da malha.
+O GeoPulse é um visualizador geográfico para explorar dados de pesquisa. Contribuições podem melhorar a navegação entre níveis, a importação de CSV, as malhas, a API, os indicadores e a documentação.
 
 ## Relatar um problema ou propor uma mudança
 
@@ -12,7 +12,7 @@ Crie uma branch a partir da `main` atualizada. O frontend requer Node.js 22 ou s
 
 ## Validar uma alteração
 
-- **Interface** — em `frontend/`, execute `npm ci` e `npm run build`. Em alterações no explorador, confira a seleção do município, a legenda e o painel analítico. Descreva o fluxo verificado no PR.
+- **Interface** — em `frontend/`, execute `npm ci` e `npm run build`. Em alterações no mapa, confira o clique de seleção, a abertura de subdivisões e o retorno ao recorte anterior. Em alterações no importador, confira a prévia, a legenda e o valor exibido ao selecionar uma área. Para reproduzir um erro de importação, use um CSV pequeno com dados públicos ou fictícios e informe o nível, as colunas e o período selecionados. [Guia do visualizador](docs/visualizador.md)
 - **API e banco** — na raiz, execute `docker compose up -d --build api`. Confira `/health`, a rota modificada e, para alterações espaciais, o resultado de `/v1/locate?lon=-43.95&lat=-19.92`, que deve incluir Belo Horizonte (`3106200`). Encerre com `docker compose down`.
 - **Dados** — altere o ETL em `scripts/build_snapshot.py` e regenere os produtos afetados. Documente fonte, ano, unidade, denominador quando aplicável e tratamento de valores ausentes. Verifique a correspondência entre os códigos IBGE e a geometria.
 - **Documentação ou mídia** — confira os links relativos e a reprodução das mídias afetadas a partir do README.

@@ -3,8 +3,8 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "GeoPulse — Inteligência territorial", template: "%s | GeoPulse" },
-  description: "Explore os 853 municípios de Minas Gerais com dados oficiais do Censo 2022.",
+  title: { default: "GeoPulse — Visualização geográfica para a ciência", template: "%s | GeoPulse" },
+  description: "Visualização geográfica para cientistas e pesquisadores. Importe dados em CSV, explore padrões espaciais e compare regiões em mapas interativos.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

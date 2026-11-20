@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Explorer } from "@/components/explorer";
+import { WorldViewer } from "@/components/world-viewer";
 
-export const metadata: Metadata = { title: "Explorar Minas Gerais" };
+export const metadata: Metadata = { title: "Visualizador mundial" };
 
 export default function ExplorePage() {
-  return <Suspense fallback={<main className="page-status">Carregando o explorador…</main>}><Explorer /></Suspense>;
+  return <Suspense fallback={<main className="page-status">Carregando o explorador…</main>}><WorldViewer /></Suspense>;
 }
