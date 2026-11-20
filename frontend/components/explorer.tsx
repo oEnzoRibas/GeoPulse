@@ -29,7 +29,7 @@ function ExplorerLoader() {
     <header className="explorer-header">
       <Brand />
       <span className="header-divider" />
-      <span className="workspace-name"><MapIcon size={17} /> Explorador territorial</span>
+      <Link className="workspace-name" prefetch={false} href="/explorar"><MapIcon size={17} /> Visualizador mundial</Link>
       <Link prefetch={false} className="header-method" href="/metodologia"><BookOpen size={17} /> <span>Metodologia</span></Link>
     </header>
     {snapshot.data ? <Workspace snapshot={snapshot.data} /> :

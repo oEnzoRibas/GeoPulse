@@ -44,7 +44,11 @@ export function formatValue(value: number | null, metric: Metric) {
 }
 
 export function classify(cities: Municipality[], metric: Metric) {
-  const values = cities.flatMap(city => city[metric] === null ? [] : [city[metric]]).sort((a, b) => a - b);
+  return classifyValues(cities.flatMap(city => city[metric] === null ? [] : [city[metric]]));
+}
+
+export function classifyValues(input: Iterable<number>) {
+  const values = [...input].sort((a, b) => a - b);
   if (!values.length) return [];
   const min = values[0];
   const max = values[values.length - 1];
@@ -53,7 +57,7 @@ export function classify(cities: Municipality[], metric: Metric) {
     const lower = Math.floor(position);
     return Number((values[lower] + (values[Math.ceil(position)] - values[lower]) * (position - lower)).toFixed(8));
   });
-  const upperBounds = [...new Set([...cuts, max])].filter(upper => upper >= min && upper <= max);
+  const upperBounds = [...new Set([...cuts, max])].filter(upper => upper >= min && upper <= max).sort((a, b) => a - b);
   return upperBounds.map((upper, index) => ({
     lower: index ? upperBounds[index - 1] : min,
     upper,
