@@ -1,0 +1,20 @@
+name: Relatar problema
+description: Informe um erro no mapa, nos dados, na API ou na documentação.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Para relatos de segurança, consulte a [política do projeto](https://github.com/oEnzoRibas/GeoPulse/security/policy)."
+  - type: textarea
+    id: observacao
+    attributes:
+      label: O que aconteceu e qual era o resultado esperado?
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Como verificar
+      description: Indique a versão ou o commit, os passos, a rota ou o navegador. Para divergências de dados, inclua município, código IBGE, ano e fonte.
+    validations:
+      required: true
