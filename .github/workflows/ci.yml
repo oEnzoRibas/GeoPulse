@@ -1,0 +1,39 @@
+name: GeoPulse CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run build
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose up -d --build api
+      - name: Verify PostGIS and API
+        run: |
+          curl --fail --silent --show-error --retry 12 --retry-all-errors --retry-delay 2 http://127.0.0.1:8000/health | jq -e '.storage == "postgis" and .status == "ok"'
+          curl --fail --silent http://127.0.0.1:8000/v1/municipalities.geojson | jq -e '.features | length == 853'
+          curl --fail --silent 'http://127.0.0.1:8000/v1/locate?lon=-43.95&lat=-19.92' | jq -e 'any(.[]; .code == "3106200")'
+      - if: failure()
+        run: docker compose logs
+      - if: always()
+        run: docker compose down -v
